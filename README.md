@@ -1,8 +1,9 @@
-# 从0开始的项目复现指南
+# Repetition:from zero to one
 
 ## 复现项目
 
 [ReCAM Github link](https://github.com/zhaozhengChen/ReCAM)
+
 [arXiv link](https://arxiv.org/abs/2203.00962)
 
 ## 环境配置
@@ -18,7 +19,7 @@ windows配置破防了,换了WSL,装的Ubuntu22.04LTS
 ```shell
 cd /ReCAM #destination folder
 git clone + [url] 
-conda create -f environment.yml -n #it have your environment name 
+conda create -f environment.yml -n #it's your environment name 
 #option -python=3.x
 ```
 
@@ -28,6 +29,52 @@ conda create -f environment.yml -n #it have your environment name
 conda activate recam #your environment name
 pip install -r requirement.txt
 ```
+
+## 小插曲
+
+我在generate seed那步运行的时候显示python package未导入,`pip list`一检查发现很多都没有装,然后就用了一个脚本去生成一个`missing.txt`.
+
+```shell
+pip freeze | awk -F '==' '{print $1}' > installed.txt
+grep -v -f installed.txt requirement.txt > missing.txt
+pip install -r missing.txt
+```
+
+最后检查出来的问题是missing.txt和之前的requirement.txt文件格式不对.:joy:
+
+这个是错误格式,pip读不出来：
+![错误格式](之前的错误格式.png)
+
+这个是正确格式,pip能正确安装：
+![正确格式](更改之后的正确格式.png)
+
+**但是**
+
+安装`pydensecrf`的时候还是不行，会显示build wheel failed.
+
+然后尝试了一下更新pip:
+
+```shell
+pip3 install --upgrade pip
+pip install --upgrade pip setuptools wheel
+```
+
+还是不对,然后发现是这说明Conda环境的 ld 链接器与系统的动态库不兼容或不匹配，导致链接失败.
+
+报错如下：
+
+```shell
+/home/user/miniconda3/envs/recam/compiler_compat/ld: cannot find /lib/x86_64-linux-gnu/libm.so.6
+```
+
+解决方案是用conda安装这个package:
+
+```shell
+conda install -c conda-forge pydensecrf
+```
+
+装是装上了,但是还是跑不起来
+然后一个一个手动`pip install`检验是哪里出了问题,发现是`pydensecrf`
 
 ## training
 
