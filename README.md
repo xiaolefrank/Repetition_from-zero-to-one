@@ -76,6 +76,12 @@ conda install -c conda-forge pydensecrf
 装是装上了,但是还是跑不起来
 然后一个一个手动`pip install`检验是哪里出了问题,发现是`pydensecrf`
 
+所以最后还是conda安装`pydensecrf`,完成了环境配置.:smile:
+
+```shell
+conda install -c conda-forge pydensecrf==1.0rc2
+```
+
 ## training
 
 以这次项目的`VOC`数据集为例:
@@ -102,4 +108,3 @@ rm #filename
 ```shell
 CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./VOCdevkit/VOC2012/ --work_space workspaces --train_cam_pass True --train_recam_pass True --make_recam_pass True --eval_cam_pass True 
 ```
-
