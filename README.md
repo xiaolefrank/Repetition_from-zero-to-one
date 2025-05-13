@@ -106,5 +106,8 @@ rm #filename
 然后run python脚本:
 
 ```shell
-CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./VOCdevkit/VOC2012/ --work_space workspaces --train_cam_pass True --train_recam_pass True --make_recam_pass True --eval_cam_pass True 
+CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/VOC2012/ --work_space workspaces --train_cam_pass True --train_recam_pass True --make_recam_pass True --eval_cam_pass True 
 ```
+
+注意这里的`--voc12_root`为`VOC`解压后的数据集本体路径,前文中我们在这个ReCAM文件夹下面新建了`voc12_root`文件夹,所以此处参数应该指定为`./voc12_root/VOCdevkit/VOC2012/`.
+
