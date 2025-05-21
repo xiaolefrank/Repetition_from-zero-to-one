@@ -6,6 +6,14 @@
 
 [arXiv link](https://arxiv.org/abs/2203.00962)
 
+
+## 服务器的WSL2的安装与基本配置
+
+由于自己的笔记本真的跑不动这个项目,所以只能在服务器上装WSL.
+
+**Step1:**下载WSL2;
+
+
 ## 环境配置
 
 ~~1. 安装`requirement.txt`里面各个包,基本就是`conda install + package name`就行.不过记得配置清华源:);
@@ -13,6 +21,7 @@
 
 windows配置破防了,换了WSL,装的Ubuntu22.04LTS
 没想到一次复现状况百出:(
+(其实看包名称就知道这个环境基本是要在Linux上跑)
 
 一般来说是`git clone`复现链接然后对着`environment.yml`直接conda安装就好了.
 
@@ -111,3 +120,6 @@ CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/
 
 注意这里的`--voc12_root`为`VOC`解压后的数据集本体路径,前文中我们在这个ReCAM文件夹下面新建了`voc12_root`文件夹,所以此处参数应该指定为`./voc12_root/VOCdevkit/VOC2012/`.
 
+~~然后就是漫长的等待,不过记得给C盘或者训练所在的盘留足够的内存,不然会触发内存锁警告.~~
+
+等了很久也跑不出来,所以换了实验室的服务器去跑.
