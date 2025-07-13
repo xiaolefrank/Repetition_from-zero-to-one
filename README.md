@@ -130,4 +130,16 @@ CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/
 conda env create -f environment.yml
 ```
 
-运行脚本同上.
+运行脚本同上.(batch_sizes从default的16调节到8，云服务器为2080Ti)
+
+**Generated seeds belike:**
+
+![workspaces](voc-workspaces.png)
+
+**Step4:** Train IRN and generate pseudo masks;
+
+训练IRN和生成伪装掩膜的python脚本:
+
+```shell
+CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/VOC2012/ --work_space workspaces --cam_to_ir_label_pass True --train_irn_pass True --make_sem_seg_pass True --eval_sem_seg_pass True --irn_batch_size 16
+```
