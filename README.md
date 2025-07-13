@@ -11,7 +11,7 @@
 
 由于自己的笔记本真的跑不动这个项目,所以只能在服务器上装WSL.
 
-**Step1:**下载WSL2;
+**Step1:** 下载WSL2;
 
 
 ## 环境配置
@@ -123,3 +123,11 @@ CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/
 ~~然后就是漫长的等待,不过记得给C盘或者训练所在的盘留足够的内存,不然会触发内存锁警告.~~
 
 等了很久也跑不出来,所以换了实验室的服务器去跑.
+
+以上均为在本地WSL2环境下配置环境的步骤,由于实验室服务器不让装Linux,所以租了一台服务器.直接一键完成配置:
+
+```shell
+conda env create -f environment.yml
+```
+
+运行脚本同上.
