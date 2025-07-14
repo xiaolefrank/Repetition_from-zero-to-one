@@ -1,5 +1,7 @@
 # Repetition:from zero to one
 
+~~副标题:炼丹师的新手上路~~
+
 ## 复现项目
 
 [ReCAM Github link](https://github.com/zhaozhengChen/ReCAM)
@@ -95,20 +97,20 @@ conda install -c conda-forge pydensecrf==1.0rc2
 
 以这次项目的`VOC`数据集为例:
 
-**Step1:** download dataset到指定目录,本项目要求是新建一个`voc12_root`的folder;
+**Step1:** download dataset到指定目录,本项目要求是新建一个`voc12_root`的folder
 
 ```shell
 aria2c http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
 ```
 
-**Step2:** 解压tar文件;
+**Step2:** 解压tar文件
 
 ```shell
 tar -xvf #filename
 rm #filename
 ```
 
-**Step3:** 激活seed;
+**Step3:** 激活seed
 
 首先指定一个workspace存放models和logs,specify为folder `workspaces`.
 
@@ -136,7 +138,7 @@ conda env create -f environment.yml
 
 ![workspaces](voc-workspaces.png)
 
-**Step4:** Train IRN and generate pseudo masks;
+**Step4:** Train IRN and generate pseudo masks
 
 训练IRN和生成伪装掩膜的python脚本:
 
@@ -144,9 +146,14 @@ conda env create -f environment.yml
 CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/VOC2012/ --work_space workspaces --cam_to_ir_label_pass True --train_irn_pass True --make_sem_seg_pass True --eval_sem_seg_pass True --irn_batch_size 8
 ```
 
-By the way,保存一下中间结果:
+By the way,保存一下中间结果(等了6小时):
 
 ```shell
 tar -czf workspaces.tar workspaces/
 ```
 
+中间结果多了一个`res50_irn.pth`的文件
+
+![res50_irn](res50_irn.png)
+
+**Step5**: Train semantic aegmentation network
