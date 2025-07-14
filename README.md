@@ -141,5 +141,12 @@ conda env create -f environment.yml
 训练IRN和生成伪装掩膜的python脚本:
 
 ```shell
-CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/VOC2012/ --work_space workspaces --cam_to_ir_label_pass True --train_irn_pass True --make_sem_seg_pass True --eval_sem_seg_pass True --irn_batch_size 16
+CUDA_VISIBLE_DEVICES=0 python run_sample.py --voc12_root ./voc12_root/VOCdevkit/VOC2012/ --work_space workspaces --cam_to_ir_label_pass True --train_irn_pass True --make_sem_seg_pass True --eval_sem_seg_pass True --irn_batch_size 8
 ```
+
+By the way,保存一下中间结果:
+
+```shell
+tar -czf workspaces.tar workspaces/
+```
+
