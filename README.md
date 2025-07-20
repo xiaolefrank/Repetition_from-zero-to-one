@@ -2,19 +2,13 @@
 
 ~~副标题:炼丹师的新手上路~~
 
+[toc]
+
 ## 复现项目
 
 [ReCAM Github link](https://github.com/zhaozhengChen/ReCAM)
 
 [arXiv link](https://arxiv.org/abs/2203.00962)
-
-
-## 服务器的WSL2的安装与基本配置
-
-由于自己的笔记本真的跑不动这个项目,所以只能在服务器上装WSL.
-
-**Step1:** 下载WSL2;
-
 
 ## 环境配置
 
